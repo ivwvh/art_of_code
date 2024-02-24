@@ -1,0 +1,12 @@
+.answers{
+    margin-bottom: 15px;
+}
+
+.question {
+  border: solid darkgray 1px;
+  padding: 5px
+}
+
+.submit-button{
+  padding-top: 5px;
+}

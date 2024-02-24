@@ -1,0 +1,41 @@
+{% extends "quiz/base.html" %}
+
+{% block title %}
+    Quiz
+{% endblock %}
+
+{% block body %}
+    {% for question in questions %}
+        <div class='question'>
+            <p1>{{ question.number }}. {{ question.content }}</p1>
+        </div>
+        <form class="answers" action="", method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+        
+        <!--<fieldset class='answers', id={{question.number}}>
+            <legend>Select answer:</legend>
+        
+            <div>
+                <input type="radio" name={{question.number}} value='1' checked />
+                <label for="1">{{ question.answer_1 }}</label>
+            </div>
+        
+            <div>
+                <input type="radio" name={{question.number}} value='2' />
+                <label for="2">{{ question.answer_2 }}</label>
+            </div>
+        
+            <div>
+                <input type="radio" name={{question.number}} value='3' />
+                <label for="3">{{ question.answer_3 }}</label>
+            </div>
+            
+            <div class='submit-button'>
+                <button type='submit'>submit</button>  
+            </div>
+        </fieldset> -->
+    {% endfor %}
+{% endblock %}
