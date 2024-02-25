@@ -13,29 +13,13 @@
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Submit">
+            {% if answer %}
+                {% if answer == question.correct_answer %}
+                    <p>Correct!</p>
+                {% else %}
+                    <p>Incorrect</p>
+                {% endif %}
+            {% endif %}
         </form>
-        
-        <!--<fieldset class='answers', id={{question.number}}>
-            <legend>Select answer:</legend>
-        
-            <div>
-                <input type="radio" name={{question.number}} value='1' checked />
-                <label for="1">{{ question.answer_1 }}</label>
-            </div>
-        
-            <div>
-                <input type="radio" name={{question.number}} value='2' />
-                <label for="2">{{ question.answer_2 }}</label>
-            </div>
-        
-            <div>
-                <input type="radio" name={{question.number}} value='3' />
-                <label for="3">{{ question.answer_3 }}</label>
-            </div>
-            
-            <div class='submit-button'>
-                <button type='submit'>submit</button>  
-            </div>
-        </fieldset> -->
     {% endfor %}
 {% endblock %}

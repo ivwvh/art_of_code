@@ -1,5 +1,6 @@
 from django import forms
-
+from django.forms import UUIDField
+import uuid
 
 class AnswerForm(forms.Form):
     choices = [

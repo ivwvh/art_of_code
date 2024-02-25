@@ -6,18 +6,19 @@ from .form import AnswerForm
 questions = [
     {
         'number': 1,
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'answer_1': 'First answer',
-        'answer_2': 'Second answer',
-        'answer_3': 'Third answer',
+        'content': 'Correct answer is 1',
+        'correct_answer': '1'
     },
     {
         'number': 2,
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'answer_1': 'First answer',
-        'answer_2': 'Second answer',
-        'answer_3': 'Third answer',
-        }
+        'content': 'Correst answer is 2',
+        'correct_answer': '2'
+    },
+    {
+        'number': 3,
+        'content': 'Correst answer is 3',
+        'correct_answer': '3'
+    },
 ]
 
 def index(request):
@@ -25,7 +26,16 @@ def index(request):
         form = AnswerForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            print(data)
+            answer = data['answer']
+            print(answer == questions[0]['correct_answer']) 
+            context = {
+                'questions': questions,
+                'form': form,
+                'answer': answer
+            }
+            return render(request,
+                          'quiz/index.html',
+                          context=context)
     else:
         form = AnswerForm()
     context = {
