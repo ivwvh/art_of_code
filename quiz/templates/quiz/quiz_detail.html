@@ -1,0 +1,26 @@
+{% extends "quiz/base.html" %}
+
+{% block title %}
+    {{ quiz.title }}
+{% endblock title %}
+
+{% block body %}
+<div class='m-2'>
+    <h1>{{ quiz.title }}</h1>
+    <form method="post" action="{% url 'submit_quiz' id=quiz.id %}">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div class='mb-2'>
+                <p>{{ question.content }}</p>
+                <input type="radio" id="ans_1_{{ question.id }}" name="question_{{ question.id }}" value="ans_1">
+                <label for="ans_1_{{ question.id }}">{{ question.ans_1 }}</label><br>
+                <input type="radio" id="ans_2_{{ question.id }}" name="question_{{ question.id }}" value="ans_2">
+                <label for="ans_2_{{ question.id }}">{{ question.ans_2 }}</label><br>
+                <input type="radio" id="ans_3_{{ question.id }}" name="question_{{ question.id }}" value="ans_3">
+                <label for="ans_3_{{ question.id }}">{{ question.ans_3 }}</label><br>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock body %}

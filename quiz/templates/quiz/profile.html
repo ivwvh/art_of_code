@@ -1,0 +1,31 @@
+{% extends 'quiz/base.html' %}
+
+{% block title %}
+Profile
+{% endblock%}
+
+{% block body %}
+    <div class='m-2'>
+    <h1>Profile</h1>
+    {% if is_teacher %}
+        <h2>My Students:</h2>
+        <ul>
+            {% for student in students %}
+                <li>{{ student.username }}</li>
+            {% empty %}
+                <li>No students assigned yet.</li>
+            {% endfor %}
+        </ul>
+    {% elif is_student %}
+        <h2>My Teacher:</h2>
+        {%if not teacher%}
+            <p>You havent chosen teacher yet</p>
+            <a href="{% url "select_teacher"%}" class='btn btn-primary'>Choice Teacher</a>
+        {% endif %}
+        <p>{{ teacher.username }}</p>
+        <a href="{% url "select_teacher"%}" class='btn btn-primary'>Change Teacher</a>
+    {% else %}
+        <p>You are not a teacher or a student.</p>
+    {% endif %}
+    </div>
+{% endblock %}

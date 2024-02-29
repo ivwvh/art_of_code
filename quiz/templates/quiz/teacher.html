@@ -1,0 +1,14 @@
+{% extends 'quiz/base.html' %}
+{% block title %}
+   Select Your Teacher
+{% endblock title %}
+
+
+{% block body %}
+ <h2>Select Your Teacher</h2>
+ <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class='btn btn-primary' type="submit">Submit</button>
+ </form>
+{% endblock %}

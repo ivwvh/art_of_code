@@ -1,0 +1,15 @@
+{% extends "quiz/base.html" %}
+
+{% block title %}
+    Creating Question
+{% endblock title %}
+
+{% block body %}
+    <div class='m-2'>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class='btn btn-primary'>Create Question</button>
+        </form>
+    </div>
+{% endblock body %}
