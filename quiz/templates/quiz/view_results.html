@@ -1,18 +1,18 @@
 {% extends 'quiz/base.html' %}
 
 {% block title %}
-    <h1>Quiz Results</h1>
+    <h1>Результаты</h1>
 {% endblock title %}
 
 {% block body %}
-    <h1>Quiz Results</h1>
-    <p>Quiz: {{ quiz.title }}</p>
-    <p>Your Score: {{ score }}</p>
+    <h1>Результаты викторины</h1>
+    <p>Викторина: {{ quiz.title }}</p>
+    <p>Набрано баллов: {{ score }}</p>
     {% if passed %}
-        <p class="text-success">Congratulations! You passed the quiz.</p>
+        <p class="text-success">Поздравляем! Вы прошли викторину.</p>
     {% else %}
-        <p class="text-danger">Sorry, you did not pass the quiz.</p>
+        <p class="text-danger">Извините, викторина не пройдена.</p>
     {% endif %}
-    <p>Passing Score: {{ quiz.passing_score }}</p>
-    <a href='{% url "home" %}' class='btn btn-primary'>Home</a>
+    <p>Проходной балл: {{ quiz.passing_score }}</p>
+    <a href='{% url "home" %}' class='btn btn-primary'>На главную</a>
 {% endblock %}

@@ -1,18 +1,18 @@
 {% extends 'quiz/base.html' %}
 
 {% block title %}
-    Quiz Statistics for {{ object.title }}
+    Статистика для {{ object.title }}
 {% endblock title %}
 
 {% block body %}
-    <h1>Quiz Statistics for {{ object.title }}</h1>
-    <p>Pass Rate: {{ pass_rate|floatformat:2 }}%</p>
-    <h2>Students Who Passed:</h2>
+    <h1>Статистика для {{ object.title }}</h1>
+    <p>Процент прохождения: {{ pass_rate|floatformat:2 }}%</p>
+    <h2>Ученики котрые прошли викторину:</h2>
     <ul>
         {% for student in passed_students %}
             <li>{{ student.student.username }}</li>
         {% empty %}
-            <li>No students passed the quiz.</li>
+            <li>Никто не прошел викторину.</li>
         {% endfor %}
     </ul>
 {% endblock %}

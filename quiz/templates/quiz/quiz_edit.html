@@ -6,13 +6,13 @@
 
 {% block body %}
     <div class='m-2'>
-        <h1>Editing Quiz: {{ object.title }}</h1>
+        <h1>Редактируем викторину: {{ object.title }}</h1>
 
-        <h2>Questions:</h2>
+        <h2>Вопросы:</h2>
         {% for question in questions %}
             <p>{{ question.content }}</p>
         {% endfor %}
-        <a class='btn btn-primary' href={% url 'question_create' quiz_id=object.id%}>Create Question </a>
+        <a class='btn btn-primary' href={% url 'question_create' quiz_id=object.id%}>Создать вопрос</a>
     </div>
 {% endblock body %}
 

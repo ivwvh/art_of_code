@@ -5,10 +5,10 @@ from .models import Quiz, Question, CustomUser, Role
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-
     class Meta:
         model = CustomUser 
         fields = ("username", "email", "password1", "password2", 'role')
+        
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -24,7 +24,7 @@ class QuizForm(forms.ModelForm):
         queryset=CustomUser.objects.none(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
-        label='Select students'
+        label='Выбрать учеников'
     )
 
     class Meta:

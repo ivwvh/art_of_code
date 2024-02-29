@@ -4,24 +4,24 @@
 {% endblock title %}
 {% block body %}
     <div class='m-2'>
-        <h1>All quizzes</h1>
+        <h1>Все викторины</h1>
         {% if user.role == 'T' %}
             {% for quiz in user.quizes.all %}
                 <p class='mt-2'>{{ quiz.title }}</p>
-                <a href="{% url "quiz_detail" quiz.id %}" class='btn btn-primary'>Start {{ quiz.title }}</a>
-                <a href="{% url "quiz_edit" quiz.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'quiz_statistics' quiz.id %}" class='btn btn-primary'>View Quiz Statistics</a>
-                <a href="{% url "quiz_delete" quiz.id %}" class='btn btn-danger'>Delete quiz</a>
+                <a href="{% url "quiz_detail" quiz.id %}" class='btn btn-primary'>Начать {{ quiz.title }}</a>
+                <a href="{% url "quiz_edit" quiz.id %}" class="btn btn-primary">Редактировать викторину</a>
+                <a href="{% url 'quiz_statistics' quiz.id %}" class='btn btn-primary'>Посмотреть статистику</a>
+                <a href="{% url "quiz_delete" quiz.id %}" class='btn btn-danger'>Удалить викторину</a>
             {% empty %}
-                <p>No quizzes created yet</p>
+                <p>Викторин не создано</p>
             {% endfor %}
-            <a href="{% url 'quiz_create' %}" class="btn btn-primary">Create Quiz</a>
+            <a href="{% url 'quiz_create' %}" class="btn btn-primary">Создать викторину</a>
         {% else %} <!--show quizzes assigned to student-->
             {% for quiz in quizes %}
                 <p class='mt-2'>{{ quiz.title }}</p>
-                <a href="{% url "quiz_detail" quiz.id %}" class='btn btn-primary'>Start {{ quiz.title }}</a>
+                <a href="{% url "quiz_detail" quiz.id %}" class='btn btn-primary'>Начать {{ quiz.title }}</a>
             {% empty %}
-                <p>No quizzes assigned to you yet.</p>
+                <p>Вам не назначено викторин</p>
             {% endfor %}
         {% endif %}
     </div>

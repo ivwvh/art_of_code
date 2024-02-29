@@ -6,26 +6,26 @@ Profile
 
 {% block body %}
     <div class='m-2'>
-    <h1>Profile</h1>
+    <h1>Профиль</h1>
     {% if is_teacher %}
-        <h2>My Students:</h2>
+        <h2>Мои ученики:</h2>
         <ul>
             {% for student in students %}
                 <li>{{ student.username }}</li>
             {% empty %}
-                <li>No students assigned yet.</li>
+                <li>У вас нет учеников.</li>
             {% endfor %}
         </ul>
     {% elif is_student %}
-        <h2>My Teacher:</h2>
+        <h2>Мой учитель:</h2>
         {%if not teacher%}
-            <p>You havent chosen teacher yet</p>
-            <a href="{% url "select_teacher"%}" class='btn btn-primary'>Choice Teacher</a>
+            <p>Вы еще не выбрали учителя</p>
+            <a href="{% url "select_teacher"%}" class='btn btn-primary'>Выбрать учителя</a>
         {% endif %}
         <p>{{ teacher.username }}</p>
-        <a href="{% url "select_teacher"%}" class='btn btn-primary'>Change Teacher</a>
+        <a href="{% url "select_teacher"%}" class='btn btn-primary'>Изменить учителя</a>
     {% else %}
-        <p>You are not a teacher or a student.</p>
+        <p>Вы не учитель или ученик.</p>
     {% endif %}
     </div>
 {% endblock %}
